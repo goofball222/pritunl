@@ -26,16 +26,16 @@
     * Labels from container:
     IE:
     ```bash
-    user@host:~$ docker inspect goofball222/murmur:<tagname>
+    user@host:~$ docker inspect goofball222/pritunl:<tagname>
     ...
                 "Labels": {
                     "org.label-schema.build-date": "2018-02-28T18:06:18Z",
                     "org.label-schema.license": "Apache-2.0",
-                    "org.label-schema.name": "Murmur Server",
+                    "org.label-schema.name": "Pritunl Server",
                     "org.label-schema.schema-version": "1.0",
-                    "org.label-schema.url": "https://github.com/goofball222/murmur",
+                    "org.label-schema.url": "https://github.com/goofball222/pritunl",
                     "org.label-schema.vcs-ref": "dc9ca9c",
-                    "org.label-schema.vcs-url": "https://github.com/goofball222/murmur.git",
+                    "org.label-schema.vcs-url": "https://github.com/goofball222/pritunl.git",
                     "org.label-schema.vendor": "goofball222",
                     "org.label-schema.version": "0.0.1"
                 }

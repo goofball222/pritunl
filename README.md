@@ -31,7 +31,7 @@ This container uses the following four ports:
 
 ---
 
-**Basic docker-compose.yml to launch the DB, pritunl in standalone mode, and make the web and VPN ports accessible**
+**Basic docker-compose.yml to launch a Mongo DB container instance, pritunl in standalone mode, and make the web and VPN ports accessible**
 
 ```bash
 
@@ -44,7 +44,7 @@ services:
     hostname: pritunldb
     network_mode: bridge
     volumes:
-      - /DATA_VOLUME/pritunl/db:/data/db
+      - ./db:/data/db
 
   pritunl:
     image: goofball222/pritunl:latest
@@ -84,7 +84,7 @@ services:
     networks:
       - private
     volumes:
-      - /DATA_VOLUME/pritunl/db:/data/db
+      - ./db:/data/db
 
   pritunl:
     image: goofball222/pritunl:latest

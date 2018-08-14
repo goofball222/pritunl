@@ -37,18 +37,16 @@ RUN set -x \
     && go get github.com/pritunl/pritunl-dns \
     && go get github.com/pritunl/pritunl-web \
     && cp /go/bin/* /usr/bin \
-    && curl -sSL https://github.com/pritunl/pritunl/archive/${VERSION}.tar.gz -o ${VERSION}.tar.gz \
-    && tar -zxvf ${VERSION}.tar.gz \
-    && cd pritunl-${VERSION} \
+    && cd /tmp \
+    && curl -sSL https://github.com/pritunl/pritunl/archive/${VERSION}.tar.gz -o /tmp/${VERSION}.tar.gz \
+    && tar -zxvf /tmp/${VERSION}.tar.gz \
+    && cd /tmp/pritunl-${VERSION} \
     && python2 setup.py build \
     && pip install -r requirements.txt \
     && mkdir -p /var/lib/pritunl \
     && python2 setup.py install \
-    && cd .. \
     && apk del --purge .build-deps \
-    && rm -rf *${VERSION}* \
-    && rm -rf /go \
-    && rm -rf /root/.cache/* /tmp/* /var/cache/apk/*
+    && rm -rf /go /root/.cache/* /tmp/* /var/cache/apk/*
 
 EXPOSE 80/tcp 443/tcp 1194/tcp 1194/udp 9700/tcp
 

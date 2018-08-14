@@ -7,7 +7,7 @@ services:
     hostname: pritunldb
     network_mode: bridge
     volumes:
-      - /DATA_VOLUME/pritunl/db:/data/db
+      - ./db:/data/db
 
   pritunl:
     image: goofball222/pritunl:latest

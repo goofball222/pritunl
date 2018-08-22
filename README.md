@@ -5,7 +5,7 @@
 ## Docker tags:
 | Tag | pritunl Version | Description | Release Date |
 | --- | :---: | --- | :---: |
-| [latest](https://github.com/goofball222/pritunl/blob/master/stable/Dockerfile) | 1.29.1789.87 | Latest stable release | 2018-08-11 |
+| [latest](https://github.com/goofball222/pritunl/blob/master/stable/Dockerfile) | 1.29.1804.86 | Latest stable release | 2018-08-22 |
 
 ---
 
@@ -22,7 +22,7 @@ Pritunl container built on Alpine Linux. Supports IPv6 and running behind a reve
 
 ## Usage
 
-This container uses the following four ports:
+This container exposes the following five ports:
 * `80/tcp` pritunl web server http port (standalone mode)
 * `443/tcp` pritunl web server https port (standalone mode)
 * `1194/tcp` pritunl VPN service port

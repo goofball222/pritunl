@@ -3,8 +3,8 @@
 # Init script for Pritunl Docker container
 # License: Apache-2.0
 # Github: https://github.com/goofball222/pritunl.git
-SCRIPT_VERSION="0.0.1"
-# Last updated date: 2018-08-11
+SCRIPT_VERSION="1.0.1"
+# Last updated date: 2018-08-22
 
 set -Eeuo pipefail
 

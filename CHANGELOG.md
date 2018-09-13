@@ -1,3 +1,6 @@
+* **2018-09-13**
+    * Bump Pritunl release to v1.29.1827.6
+---
 * **2018-08-24**
     * Update Dockerfile
         * Add tzdata package to container. Makes TZ= and /etc/localtime volume mapping actually work...

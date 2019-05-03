@@ -1,3 +1,6 @@
+* **2019-05-02**
+    * Add py-dnspython package, closes issue/enhancement #4
+---
 * **2019-04-25**
     * Bump Pritunl release to v1.29.2051.18
 ---

@@ -33,7 +33,7 @@ RUN set -x \
     && apk add -q --no-cache \
         bash ca-certificates iptables ip6tables \
         openssl openvpn procps py-setuptools \
-        tzdata \
+        py-dnspython tzdata \
     && pip install --upgrade pip \
     && go get github.com/pritunl/pritunl-dns \
     && go get github.com/pritunl/pritunl-web \

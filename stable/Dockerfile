@@ -18,7 +18,7 @@ LABEL \
 ENV \
     DEBUG=false \
     GOPATH="/go" \
-    GOCACHE=off \
+    GOCACHE="/tmp/gocache" \
     PRITUNL_OPTS= \
     REVERSE_PROXY=false
 

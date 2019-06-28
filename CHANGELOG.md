@@ -1,3 +1,6 @@
+* **2019-06-28**
+    * Fix GOCACHE=off deprecation introduced with Go 1.12 in updated alpine base
+---
 * **2019-05-02**
     * Add py-dnspython package, closes issue/enhancement #4
 ---

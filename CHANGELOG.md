@@ -1,5 +1,6 @@
 * **2019-07-27**
     * Bump Pritunl release to v1.29.2145.25
+    * Add missing 'make' build dependency, fixes 'Exception: ERROR: The 'make' utility is missing from PATH' building pynacl
 ---
 * **2019-06-28**
     * Fix GOCACHE=off deprecation introduced with Go 1.12 in updated alpine base

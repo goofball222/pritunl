@@ -29,7 +29,7 @@ ADD root /
 RUN set -x \
     && apk add -q --no-cache --virtual .build-deps \
         bzr curl gcc git go libffi-dev linux-headers \
-        musl-dev openssl-dev python-dev py-pip \
+        make musl-dev openssl-dev python-dev py-pip \
     && apk add -q --no-cache \
         bash ca-certificates iptables ip6tables \
         openssl openvpn procps py-setuptools \

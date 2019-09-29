@@ -1,3 +1,6 @@
+* **2019-09-29**
+    * Bump Pritunl release to v1.29.2208.39
+---
 * **2019-07-27**
     * Bump Pritunl release to v1.29.2145.25
     * Add missing 'make' build dependency, fixes 'Exception: ERROR: The 'make' utility is missing from PATH' building pynacl

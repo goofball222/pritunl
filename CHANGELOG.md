@@ -1,3 +1,6 @@
+* **2020-03-21**
+    * Bump Pritunl release to v1.29.2384.51
+---
 * **2019-10-23**
     * Bump Pritunl release to v1.29.2276.91
 ---

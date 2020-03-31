@@ -50,6 +50,8 @@ services:
     image: goofball222/pritunl:latest
     container_name: pritunl
     hostname: pritunl
+    depends_on:
+        - mongo
     network_mode: bridge
     privileged: true
     sysctls:
@@ -90,6 +92,8 @@ services:
     image: goofball222/pritunl:latest
     container_name: pritunl
     hostname: pritunl
+    depends_on:
+        - mongo
     privileged: true
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0

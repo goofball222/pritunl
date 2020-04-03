@@ -26,8 +26,24 @@ This container exposes the following five ports:
 * `80/tcp` pritunl web server http port (standalone mode)
 * `443/tcp` pritunl web server https port (standalone mode)
 * `1194/tcp` pritunl VPN service port
-* `1194/udp` pritunl VPN service port
+* `1194/tcp` pritunl OpenVPN service port
+* `1195/udp` pritunl wireguard service port - No default in app, this is a suggestion only.
 * `9700/tcp` pritunl web server http port (reverse-proxy mode)
+
+---
+
+Wireguard support requires the Docker host to have wireguard kernel modules installed and loaded.
+Configuration information available at:
+https://docs.pritunl.com/docs/wireguard
+https://docs.pritunl.com/docs/wireguard-client
+
+
+If pritunl fails to connect and the following error is logged:
+`ip6tables v1.8.3 (legacy): can't initialize ip6tables table 'filter': Table does not exist (do you need to insmod?)`
+You need to load the ip6tables_filter kernel module on your Docker host and restart the container:
+`user@host:~$ sudo modprobe ip6table_filter`
+This may be required after kernel upgrades and reboots on the Docker host.
+From: https://ilhicas.com/2018/04/08/Fixing-do-you-need-insmod.html
 
 ---
 
@@ -65,6 +81,7 @@ services:
       - 443:443
       - 1194:1194
       - 1194:1194/udp
+      - 1195:1195/udp
     environment:
       - TZ=UTC
 
@@ -107,6 +124,7 @@ services:
     ports:
       - 1194:1194
       - 1194:1194/udp
+      - 1195:1195/udp
     expose:
       - 9700
     environment:

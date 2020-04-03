@@ -27,6 +27,7 @@ services:
     ports:
       - 1194:1194
       - 1194:1194/udp
+      - 1195:1195/udp
     expose:
       - 9700
     environment:

@@ -26,5 +26,6 @@ services:
       - 443:443
       - 1194:1194
       - 1194:1194/udp
+      - 1195:1195/udp
     environment:
       - TZ=UTC

@@ -33,17 +33,28 @@ This container exposes the following five ports:
 ---
 
 Wireguard support requires the Docker host to have wireguard kernel modules installed and loaded.
+
 Configuration information available at:
-https://docs.pritunl.com/docs/wireguard
-https://docs.pritunl.com/docs/wireguard-client
+* https://docs.pritunl.com/docs/wireguard
+* https://docs.pritunl.com/docs/wireguard-client
 
+---
 
-If pritunl fails to connect and the following error is logged:
+If  configured pritunl OpenVPN server(s) fails to start and
+
 `ip6tables v1.8.3 (legacy): can't initialize ip6tables table 'filter': Table does not exist (do you need to insmod?)`
-You need to load the ip6tables_filter kernel module on your Docker host and restart the container:
-`user@host:~$ sudo modprobe ip6table_filter`
-This may be required after kernel upgrades and reboots on the Docker host.
-From: https://ilhicas.com/2018/04/08/Fixing-do-you-need-insmod.html
+
+is repeatedly logged in the Docker container log:
+
+Load the ip6tables_filter kernel module on your Docker host and restart the container.
+
+```bash
+user@host:~$ sudo modprobe ip6table_filter
+user@host:~$ sudo docker restart pritunl
+```
+
+This may need to be performed after kernel upgrades and reboots on the Docker host.
+* https://ilhicas.com/2018/04/08/Fixing-do-you-need-insmod.html
 
 ---
 

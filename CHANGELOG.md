@@ -2,6 +2,8 @@
     * Bump Pritunl release to v1.29.2395.63
     * Add wireguard-tools package to support new wireguard option
     * Update documentation to include howto for wireguard setup
+    * Add WIREGUARD environment variable - wireguard needs the pritunl https server running on 443 inside the container
+    * Update documentation and examples for wireguard + reverse proxy
 ---
 * **2020-04-02**
     * Bump Pritunl release to v1.29.2394.19

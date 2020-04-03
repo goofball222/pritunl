@@ -24,29 +24,36 @@ Pritunl container built on Alpine Linux. Supports IPv6 and running behind a reve
 
 This container exposes the following five ports:
 * `80/tcp` pritunl web server http port (standalone mode)
-* `443/tcp` pritunl web server https port (standalone mode)
+* `443/tcp` pritunl web server https port (standalone and wireguard reverse-proxy mode)
 * `1194/tcp` pritunl VPN service port
 * `1194/tcp` pritunl OpenVPN service port
 * `1195/udp` pritunl wireguard service port - No default in app, this is a suggestion only.
-* `9700/tcp` pritunl web server http port (reverse-proxy mode)
+* `9700/tcp` pritunl web server http port (non-wireguard reverse-proxy mode)
 
 ---
 
-Wireguard support requires the Docker host to have wireguard kernel modules installed and loaded.
+**Wireguard**
 
-Configuration information available at:
+The Docker host is required to have wireguard kernel modules installed and loaded.
+
+Wireguard also requires that the pritunl web service exists internally on port 443 with SSL enabled (self-signed or LetsEncrypt cert). Without this clients will fail to connect or connection will time out after 15s in wireguard mode. This presents problems with existing reverse-proxy support using port 9700 and no SSL.
+
+Wireguard + Traefik 1.X reverse-proxy + pritunl SSL self-signed cert:
+* Set `InsecureSkipVerify = true` in Traefik 1.X `traefik.toml` config file (configure Traefik to accept invalid/self-signed certs)
+* Set container ENV variable `REVERSE_PROXY=true` (configure pritunl for reverse-proxy/load-balance mode)
+* Set container ENV variable `WIREGUARD=true` (configure pritunl to run web interface on port 443 with SSL)
+
+Further pritunl wireguard information available at:
 * https://docs.pritunl.com/docs/wireguard
 * https://docs.pritunl.com/docs/wireguard-client
 
 ---
 
-If  configured pritunl OpenVPN server(s) fails to start and
+**OpenVPN server fails to start, insmod error**
 
-`ip6tables v1.8.3 (legacy): can't initialize ip6tables table 'filter': Table does not exist (do you need to insmod?)`
+`ip6tables v1.8.3 (legacy): can't initialize ip6tables table 'filter': Table does not exist (do you need to insmod?)` is repeatedly logged in the Docker container log along with python errors.
 
-is repeatedly logged in the Docker container log:
-
-Load the ip6tables_filter kernel module on your Docker host and restart the container.
+Load the ip6tables_filter kernel module on your Docker host and restart the container:
 
 ```bash
 user@host:~$ sudo modprobe ip6table_filter
@@ -100,64 +107,7 @@ services:
 
 ---
 
-**Extended docker-compose.yml to launch the DB, pritunl in reverse-proxy mode, and add labels for Traefik**
-
-```bash
-
-version: '3'
-
-services:
-  mongo:
-    image: mongo:latest
-    container_name: pritunldb
-    hostname: pritunldb
-    networks:
-      - private
-    volumes:
-      - ./db:/data/db
-
-  pritunl:
-    image: goofball222/pritunl:latest
-    container_name: pritunl
-    hostname: pritunl
-    depends_on:
-        - mongo
-    privileged: true
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=0
-    networks:
-      - private
-      - proxy
-    links:
-      - mongo
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-    ports:
-      - 1194:1194
-      - 1194:1194/udp
-      - 1195:1195/udp
-    expose:
-      - 9700
-    environment:
-      - TZ=UTC
-      - MONGODB_URI=mongodb://mongo:27017/pritunl
-      - REVERSE_PROXY=true
-    labels:
-      - traefik.backend=pritunl
-      - traefik.frontend.rule=Host:<HOSTNAME>
-      - traefik.port=9700
-      - traefik.docker.network=proxy
-      - traefik.enable=true
-
-networks:
-  proxy:
-    external:
-      name: proxy
-  private:
-    driver: bridge
-    internal: true
-
-```
+**Other/extended docker-compose.yml examples see: https://github.com/goofball222/pritunl/tree/master/examples**
 
 ---
 
@@ -167,8 +117,9 @@ networks:
 | :--- | :---: | --- |
 | `DEBUG` | ***false*** | Set to *true* for extra entrypoint script verbosity for debugging |
 | `MONGODB_URI` | ***mongodb://mongo:27017/pritunl*** | Sets the URI Pritunl will access for the Mongo DB instance |
-| `REVERSE_PROXY` | ***false*** | Set to *true* to set the pritunl web interface to run in reverse-proxy mode (Traefik/nginx) |
 | `PRITUNL_OPTS` | ***unset*** | Any additional custom run options for the container pritunl process
+| `REVERSE_PROXY` | ***false*** | Set to *true* to set the pritunl web interface to run in reverse-proxy mode (Traefik/nginx) |
+| `WIREGUARD` | ***false*** | Set to *true*, Switches web interface back to port 443 and HTTPS if running wireguard with reverse-proxy (Traefik/nginx) |
 
 [//]: # (Licensed under the Apache 2.0 license)
 [//]: # (Copyright 2018 The Goofball - goofball222@gmail.com)

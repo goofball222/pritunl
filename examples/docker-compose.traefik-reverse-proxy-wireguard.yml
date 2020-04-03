@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: pritunldb
+    hostname: pritunldb
+    networks:
+      - private
+    volumes:
+      - ./db:/data/db
+
+  pritunl:
+    image: goofball222/pritunl:latest
+    container_name: pritunl
+    hostname: pritunl
+    privileged: true
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+    networks:
+      - private
+      - proxy
+    links:
+      - mongo
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 1194:1194
+      - 1194:1194/udp
+      - 1195:1195/udp
+    expose:
+      - 80
+      - 443
+    environment:
+      - TZ=UTC
+      - MONGODB_URI=mongodb://mongo:27017/pritunl
+      - REVERSE_PROXY=true
+    labels:
+      - traefik.backend=pritunl
+      - traefik.frontend.rule=Host:<HOSTNAME>
+      - traefik.port=443
+      - traefik.protocol=https
+      - traefik.docker.network=proxy
+      - traefik.enable=true
+
+networks:
+  proxy:
+    external:
+      name: proxy
+  private:
+    driver: bridge
+    internal: true
+

@@ -20,7 +20,8 @@ ENV \
     GOPATH="/go" \
     GOCACHE="/tmp/gocache" \
     PRITUNL_OPTS= \
-    REVERSE_PROXY=false
+    REVERSE_PROXY=false \
+    WIREGUARD=false
 
 WORKDIR /opt/pritunl
 
@@ -49,7 +50,7 @@ RUN set -x \
     && apk del -q --purge .build-deps \
     && rm -rf /go /root/.cache/* /tmp/* /var/cache/apk/*
 
-EXPOSE 80/tcp 443/tcp 1194/tcp 1194/udp 9700/tcp
+EXPOSE 80/tcp 443/tcp 1194/tcp 1194/udp 1195/udp 9700/tcp
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 

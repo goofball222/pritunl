@@ -28,15 +28,21 @@ pritunl_setup() {
 
     ${PRITUNL} set-mongodb ${MONGODB_URI:-"mongodb://mongo:27017/pritunl"}
 
-    if [ "${REVERSE_PROXY}" == 'true' ];
-        then
+    if [ "${REVERSE_PROXY}" == 'true' ] && [ "${WIREGUARD}" == 'false' ]; then
             ${PRITUNL} set app.reverse_proxy true
+            ${PRITUNL} set app.redirect_server false
             ${PRITUNL} set app.server_ssl false
             ${PRITUNL} set app.server_port 9700
-        else
-            ${PRITUNL} set app.reverse_proxy false
+    elif [ "${REVERSE_PROXY}" == 'true' ] && [ "${WIREGUARD}" == 'true' ]; then
+            ${PRITUNL} set app.reverse_proxy true
+            ${PRITUNL} set app.redirect_server false
             ${PRITUNL} set app.server_ssl true
             ${PRITUNL} set app.server_port 443
+    else
+        ${PRITUNL} set app.reverse_proxy false
+        ${PRITUNL} set app.redirect_server true
+        ${PRITUNL} set app.server_ssl true
+        ${PRITUNL} set app.server_port 443
     fi
 
     PRITUNL_OPTS="start ${PRITUNL_OPTS}"

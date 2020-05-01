@@ -1,3 +1,6 @@
+* **2020-05-01**
+    * Bump Pritunl release to v1.29.2423.17
+---
 * **2020-04-04**
     * Bump Pritunl release to v1.29.2395.63
     * Add wireguard-tools package to support new wireguard option

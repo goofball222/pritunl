@@ -1,19 +1,18 @@
-FROM alpine
+FROM alpine:3.10
 
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 
 LABEL \
-    org.label-schema.vendor="The Goofball - goofball222@gmail.com" \
-    org.label-schema.url="https://github.com/goofball222/pritunl" \
-    org.label-schema.name="Pritunl Server" \
-    org.label-schema.version=$VERSION \
-    org.label-schema.vcs-url="https://github.com/goofball222/pritunl.git" \
-    org.label-schema.vcs-ref=$VCS_REF \
-    org.label-schema.build-date=$BUILD_DATE \
-    org.label-schema.license="Apache-2.0" \
-    org.label-schema.schema-version="1.0"
+    org.opencontainers.image.vendor="The Goofball - goofball222@gmail.com" \
+    org.opencontainers.image.url="https://github.com/goofball222/pritunl" \
+    org.opencontainers.image.title="Pritunl Server" \
+    org.opencontainers.image.version=$VERSION \
+    org.opencontainers.image.source="https://github.com/goofball222/pritunl.git" \
+    org.opencontainers.image.revision=$VCS_REF \
+    org.opencontainers.image.created=$BUILD_DATE \
+    org.opencontainers.image.licenses="Apache-2.0"
 
 ENV \
     DEBUG=false \
@@ -30,11 +29,11 @@ ADD root /
 RUN set -x \
     && apk add -q --no-cache --virtual .build-deps \
         bzr curl gcc git go libffi-dev linux-headers \
-        make musl-dev openssl-dev python-dev py-pip \
+        make musl-dev openssl-dev python2-dev py-pip \
     && apk add -q --no-cache \
         bash ca-certificates iptables ip6tables \
-        openssl openvpn procps py-setuptools \
-        py-dnspython tzdata wireguard-tools \
+        openssl openvpn procps py2-setuptools \
+        py2-dnspython tzdata wireguard-tools \
     && pip install --upgrade pip \
     && go get github.com/pritunl/pritunl-dns \
     && go get github.com/pritunl/pritunl-web \

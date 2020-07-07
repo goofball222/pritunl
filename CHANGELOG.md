@@ -1,3 +1,6 @@
+* **2020-07-07**
+    * Bump Pritunl release to v1.29.2490.44
+---
 * **2020-06-15**
     * Update Dockerfile label schema
     * Set base to alpine:3.10, fixes bzr, python2-dev, py2-dnspython, & py2-setuptools dependencies breaking hub build

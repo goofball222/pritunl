@@ -35,6 +35,7 @@ services:
       - TZ=UTC
       - MONGODB_URI=mongodb://mongo:27017/pritunl
       - REVERSE_PROXY=true
+      - WIREGUARD=true
     labels:
       - traefik.backend=pritunl
       - traefik.frontend.rule=Host:<HOSTNAME>

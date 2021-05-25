@@ -2,7 +2,7 @@ FROM alpine:3.10
 
 ARG BUILD_DATE
 ARG VCS_REF
-ARG VERSION
+ARG VERSION=1.29.2664.67
 
 LABEL \
     org.opencontainers.image.vendor="The Goofball - goofball222@gmail.com" \
@@ -34,8 +34,13 @@ RUN set -x \
         bash ca-certificates iptables ip6tables \
         openssl openvpn procps py2-setuptools \
         py2-dnspython tzdata wireguard-tools \
-    && pip install --upgrade pip \
-    && go get github.com/pritunl/pritunl-dns \
+    && pip install --upgrade pip 
+
+# Install go
+COPY --from=golang:1.13-alpine /usr/local/go/ /usr/local/go/
+ENV PATH="/usr/local/go/bin:${PATH}"
+
+RUN go get github.com/pritunl/pritunl-dns \
     && go get github.com/pritunl/pritunl-web \
     && cp /go/bin/* /usr/bin \
     && cd /tmp \

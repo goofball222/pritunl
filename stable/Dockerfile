@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM alpine
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -18,6 +18,7 @@ ENV \
     DEBUG=false \
     GOPATH="/go" \
     GOCACHE="/tmp/gocache" \
+    GO111MODULE=off \
     PRITUNL_OPTS= \
     REVERSE_PROXY=false \
     WIREGUARD=false
@@ -28,13 +29,14 @@ ADD root /
 
 RUN set -x \
     && apk add -q --no-cache --virtual .build-deps \
-        bzr curl gcc git go libffi-dev linux-headers \
-        make musl-dev openssl-dev python2-dev py-pip \
+        curl gcc git go \ 
+        libffi-dev linux-headers make musl-dev \
+        openssl-dev python3-dev py3-pip \
     && apk add -q --no-cache \
         bash ca-certificates iptables ip6tables \
-        openssl openvpn procps py2-setuptools \
-        py2-dnspython tzdata wireguard-tools \
-    && pip install --upgrade pip \
+        openssl openvpn procps py3-dnspython \
+        py3-requests py3-setuptools tzdata wireguard-tools \
+    && pip3 install --upgrade pip \
     && go get github.com/pritunl/pritunl-dns \
     && go get github.com/pritunl/pritunl-web \
     && cp /go/bin/* /usr/bin \
@@ -42,10 +44,10 @@ RUN set -x \
     && curl -sSL https://github.com/pritunl/pritunl/archive/${VERSION}.tar.gz -o /tmp/${VERSION}.tar.gz \
     && tar -zxf /tmp/${VERSION}.tar.gz \
     && cd /tmp/pritunl-${VERSION} \
-    && python2 setup.py build \
-    && pip install -r requirements.txt \
+    && python3 setup.py build \
+    && pip3 install -r requirements.txt \
     && mkdir -p /var/lib/pritunl \
-    && python2 setup.py install \
+    && python3 setup.py install \
     && apk del -q --purge .build-deps \
     && rm -rf /go /root/.cache/* /tmp/* /var/cache/apk/*
 

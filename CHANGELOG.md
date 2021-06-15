@@ -1,3 +1,8 @@
+* **2021-06-14**
+    * Bump Pritunl release to v1.30.2817.44
+    * Update Dockerfile base back to alpine:latest
+    * Update packages to python3
+---
 * **2020-12-28**
     * Bump Pritunl release to v1.29.2664.67
 ---

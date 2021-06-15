@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - stable
-      - .github/workflows/docker-build-stable.yml
 
 jobs:
   build:

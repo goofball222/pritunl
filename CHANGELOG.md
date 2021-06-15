@@ -1,3 +1,7 @@
+* **2021-06-15**
+    * Update to GitHub actions for builds
+    * Publish to ghcr.io in addition to Docker Hub
+---
 * **2021-06-14**
     * Bump Pritunl release to v1.30.2817.44
     * Update Dockerfile base back to alpine:latest

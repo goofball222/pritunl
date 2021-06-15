@@ -1,15 +1,15 @@
 # Pritunl Docker Container
 
-[![Docker Build Status](https://img.shields.io/docker/cloud/build/goofball222/pritunl.svg)](https://hub.docker.com/r/goofball222/pritunl/) [![Docker Pulls](https://img.shields.io/docker/pulls/goofball222/pritunl.svg)](https://hub.docker.com/r/goofball222/pritunl/) [![Docker Stars](https://img.shields.io/docker/stars/goofball222/pritunl.svg)](https://hub.docker.com/r/goofball222/pritunl/) [![MB Layers](https://images.microbadger.com/badges/image/goofball222/pritunl.svg)](https://microbadger.com/images/goofball222/pritunl) [![MB Commit](https://images.microbadger.com/badges/commit/goofball222/pritunl.svg)](https://microbadger.com/images/goofball222/pritunl) [![MB License](https://images.microbadger.com/badges/license/goofball222/pritunl.svg)](https://microbadger.com/images/goofball222/pritunl)
+[![Stable Build Status](https://github.com/goofball222/pritunl/actions/workflows/docker-build-stable.yml/badge.svg)](https://github.com/goofball222/pritunl/actions/workflows/docker-build-stable.yml) [![Docker Pulls](https://img.shields.io/docker/pulls/goofball222/pritunl.svg)](https://hub.docker.com/r/goofball222/pritunl/) [![Docker Stars](https://img.shields.io/docker/stars/goofball222/pritunl.svg)](https://hub.docker.com/r/goofball222/pritunl/) [![MB License](https://images.microbadger.com/badges/license/goofball222/pritunl.svg)](https://microbadger.com/images/goofball222/pritunl)
 
 ## Docker tags:
 | Tag | pritunl Version | Description | Release Date |
 | --- | :---: | --- | :---: |
-| [latest](https://github.com/goofball222/pritunl/blob/master/stable/Dockerfile) | v1.30.2817.44 | Latest stable release | 2021-06-14 |
+| [latest](https://github.com/goofball222/pritunl/blob/main/stable/Dockerfile) | v1.30.2817.44 | Latest stable release | 2021-06-14 |
 
 ---
 
-* [Recent changes, see: GitHub CHANGELOG.md](https://github.com/goofball222/pritunl/blob/master/CHANGELOG.md)
+* [Recent changes, see: GitHub CHANGELOG.md](https://github.com/goofball222/pritunl/blob/main/CHANGELOG.md)
 * [Report any bugs, issues or feature requests on GitHub](https://github.com/goofball222/pritunl/issues)
 
 ---
@@ -107,7 +107,7 @@ services:
 
 ---
 
-**Other/extended docker-compose.yml examples see: https://github.com/goofball222/pritunl/tree/master/examples**
+**Other/extended docker-compose.yml examples see: https://github.com/goofball222/pritunl/tree/main/examples**
 
 ---
 

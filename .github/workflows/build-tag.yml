@@ -30,6 +30,7 @@ jobs:
             latest=false
           labels: |
             org.opencontainers.image.vendor=The Goofball - goofball222@gmail.com
+            org.opencontainers.image.title=Pritunl Server
             org.opencontainers.image.description=Pritunl Server
 #            org.opencontainers.image.version=${{ steps.getargs.outputs.version }}
       -

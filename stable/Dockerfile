@@ -1,6 +1,19 @@
 FROM alpine
 
+ARG BUILD_DATE
+ARG VCS_REF
 ARG VERSION
+
+LABEL \
+    org.opencontainers.image.vendor="The Goofball - goofball222@gmail.com" \
+    org.opencontainers.image.url="https://github.com/goofball222/pritunl" \
+    org.opencontainers.image.title="Pritunl Server" \
+    org.opencontainers.image.description="Pritunl Server" \
+    org.opencontainers.image.version=$VERSION \
+    org.opencontainers.image.source="https://github.com/goofball222/pritunl" \
+    org.opencontainers.image.revision=$VCS_REF \
+    org.opencontainers.image.created=$BUILD_DATE \
+    org.opencontainers.image.licenses="Apache-2.0"
 
 ENV \
     DEBUG=false \

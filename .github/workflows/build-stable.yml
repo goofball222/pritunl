@@ -32,7 +32,8 @@ jobs:
 #            type=raw,${{ steps.getargs.outputs.version }}
           labels: |
             org.opencontainers.image.vendor=The Goofball - goofball222@gmail.com
-            org.opencontainers.image.description=Containerized Pritunl Server
+            org.opencontainers.image.title=Pritunl Server
+            org.opencontainers.image.description=Pritunl Server
             org.opencontainers.image.version=${{ steps.getargs.outputs.version }}
       -
         name: Set up QEMU

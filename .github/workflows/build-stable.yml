@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - stable/**
+      - .github/workflows/build-stable.yml
 
 jobs:
   build:
@@ -13,11 +16,11 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
-        name: Setup dynamic build ARGs
+        name: Set up dynamic build ARGs
         id: getargs
         run: echo "::set-output name=version::$(cat ./stable/VERSION)"
       -
-        name: Setup Docker metadata
+        name: Set up Docker metadata
         id: meta
         uses: docker/metadata-action@v3
         with:
@@ -26,9 +29,10 @@ jobs:
             ghcr.io/${{ github.repository }}
           tags: |
             type=raw,latest
+#            type=raw,${{ steps.getargs.outputs.version }}
           labels: |
             org.opencontainers.image.vendor=The Goofball - goofball222@gmail.com
-            org.opencontainers.image.description=Pritunl Server
+            org.opencontainers.image.description=Containerized Pritunl Server
             org.opencontainers.image.version=${{ steps.getargs.outputs.version }}
       -
         name: Set up QEMU

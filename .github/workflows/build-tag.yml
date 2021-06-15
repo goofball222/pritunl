@@ -13,11 +13,11 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
-        name: Setup dynamic build ARGs
+        name: Set up dynamic build ARGs
         id: getargs
         run: echo "::set-output name=version::$(cat ./stable/VERSION)"
       -
-        name: Setup Docker metadata
+        name: Set up Docker metadata
         id: meta
         uses: docker/metadata-action@v3
         with:

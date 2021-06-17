@@ -1,6 +1,6 @@
 # Pritunl Docker Container
 
-[![Stable Build Status](https://github.com/goofball222/pritunl/actions/workflows/build-stable.yml/badge.svg)](https://github.com/goofball222/pritunl/actions/workflows/build-stable.yml) [![Docker Pulls](https://img.shields.io/docker/pulls/goofball222/pritunl.svg)](https://hub.docker.com/r/goofball222/pritunl/) [![Docker Stars](https://img.shields.io/docker/stars/goofball222/pritunl.svg)](https://hub.docker.com/r/goofball222/pritunl/) [![MB License](https://images.microbadger.com/badges/license/goofball222/pritunl.svg)](https://microbadger.com/images/goofball222/pritunl)
+[![Latest Build Status](https://github.com/goofball222/pritunl/actions/workflows/build-latest.yml/badge.svg)](https://github.com/goofball222/pritunl/actions/workflows/build-latest.yml) [![Docker Pulls](https://img.shields.io/docker/pulls/goofball222/pritunl.svg)](https://hub.docker.com/r/goofball222/pritunl/) [![Docker Stars](https://img.shields.io/docker/stars/goofball222/pritunl.svg)](https://hub.docker.com/r/goofball222/pritunl/) [![MB License](https://images.microbadger.com/badges/license/goofball222/pritunl.svg)](https://microbadger.com/images/goofball222/pritunl)
 
 ## Docker tags:
 | Tag | pritunl Version | Description | Release Date |

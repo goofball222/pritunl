@@ -1,3 +1,7 @@
+* **2021-06-17**
+    * Update GitHub actions
+    * Configure multi-architecture to build for arm64
+---
 * **2021-06-15**
     * Update to GitHub actions for builds
     * Publish to ghcr.io in addition to Docker Hub

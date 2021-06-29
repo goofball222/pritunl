@@ -1,3 +1,6 @@
+* **2021-06-29**
+    * Bump Pritunl release to v1.30.2847.71
+---
 * **2021-06-17**
     * Update GitHub actions
     * Configure multi-architecture to build for arm64

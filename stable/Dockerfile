@@ -30,9 +30,10 @@ ADD root /
 
 RUN set -x \
     && apk add -q --no-cache --virtual .build-deps \
-        curl gcc git go \ 
-        libffi-dev linux-headers make musl-dev \
-        openssl-dev python3-dev py3-pip \
+        cargo curl gcc git \
+        go libffi-dev linux-headers make \
+        musl-dev openssl-dev python3-dev py3-pip \
+        rust \
     && apk add -q --no-cache \
         bash ca-certificates iptables ip6tables \
         openssl openvpn procps py3-dnspython \

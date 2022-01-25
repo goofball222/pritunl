@@ -33,7 +33,7 @@ RUN set -x \
         cargo curl gcc git \
         go libffi-dev linux-headers make \
         musl-dev openssl-dev python3-dev py3-pip \
-        rust \
+        rust ipset \
     && apk add -q --no-cache \
         bash ca-certificates iptables ip6tables \
         openssl openvpn procps py3-dnspython \

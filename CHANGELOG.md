@@ -1,3 +1,7 @@
+* **2022-01-26**
+    * Add ipset package (contritbution by [weekdayfabian](https://github.com/weekdayfabian))
+    * pritunl v1.30.3058.49
+---
 * **2022-01-21**
     * pritunl v1.30.3053.58
 ---

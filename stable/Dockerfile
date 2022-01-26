@@ -35,9 +35,10 @@ RUN set -x \
         musl-dev openssl-dev python3-dev py3-pip \
         rust \
     && apk add -q --no-cache \
-        bash ca-certificates iptables ip6tables \
-        openssl openvpn procps py3-dnspython ipset \
-        py3-requests py3-setuptools tzdata wireguard-tools \
+        bash ca-certificates ipset iptables \
+        ip6tables openssl openvpn procps \
+        py3-dnspython py3-requests py3-setuptools tzdata \
+        wireguard-tools \
     && pip3 install --upgrade pip \
     && go get github.com/pritunl/pritunl-dns \
     && go get github.com/pritunl/pritunl-web \

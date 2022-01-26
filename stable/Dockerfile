@@ -33,10 +33,10 @@ RUN set -x \
         cargo curl gcc git \
         go libffi-dev linux-headers make \
         musl-dev openssl-dev python3-dev py3-pip \
-        rust ipset \
+        rust \
     && apk add -q --no-cache \
         bash ca-certificates iptables ip6tables \
-        openssl openvpn procps py3-dnspython \
+        openssl openvpn procps py3-dnspython ipset \
         py3-requests py3-setuptools tzdata wireguard-tools \
     && pip3 install --upgrade pip \
     && go get github.com/pritunl/pritunl-dns \

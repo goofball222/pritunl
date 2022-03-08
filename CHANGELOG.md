@@ -1,5 +1,6 @@
 * **2022-03-07**
     * pritunl v1.30.3098.52
+    * Update/fix GitHub archive path
 ---
 * **2022-02-07**
     * pritunl v1.30.3070.59

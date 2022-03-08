@@ -44,7 +44,7 @@ RUN set -x \
     && go get github.com/pritunl/pritunl-web \
     && cp /go/bin/* /usr/bin \
     && cd /tmp \
-    && curl -sSL https://github.com/pritunl/pritunl/archive/${VERSION}.tar.gz -o /tmp/${VERSION}.tar.gz \
+    && curl -sSL https://github.com/pritunl/pritunl/archive/refs/tags/${VERSION}.tar.gz -o /tmp/${VERSION}.tar.gz \
     && tar -zxf /tmp/${VERSION}.tar.gz \
     && cd /tmp/pritunl-${VERSION} \
     && python3 setup.py build \

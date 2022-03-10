@@ -40,7 +40,6 @@ RUN set -x \
         py3-dnspython py3-requests py3-setuptools tzdata \
         wireguard-tools \
     && pip3 install --upgrade pip \
-    && pip3 install markupsafe==2.0.1 \
     && pip3 install itsdangerous==2.0.1 \
     && go get github.com/pritunl/pritunl-dns \
     && go get github.com/pritunl/pritunl-web \

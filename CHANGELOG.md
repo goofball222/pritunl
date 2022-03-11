@@ -4,6 +4,10 @@
     * v1.30.3101.81 released today partially fixes #14, removed markupsafe pin
     * pritunl flask is still 1.1.2, keep itsdangerous 2.0.1 manual pin
         * PR to pritunl to pin in requirements.txt or update flask
+        * Closed w/o merge, see below.
+    * v1.30.3101.90 released. Fully fixes #14 with no Dockerfile pin workarounds.
+        * requirements.txt pins flask==2.0.3 now (was 1.1.2)
+        * requirements.txt pins jinja2==3.0.3 now (was 2.11.3)
 ---
 * **2022-03-07**
     * pritunl v1.30.3098.52

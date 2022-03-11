@@ -1,4 +1,7 @@
 * **2022-03-10**
+    * pritunl v1.30.3102.46
+---
+* **2022-03-10**
     * Fix #14, pin markupsafe and itsdangerous to 2.0.1 version
     * Rerelease image for pritunl v1.30.3098.52
     * v1.30.3101.81 released today partially fixes #14, removed markupsafe pin

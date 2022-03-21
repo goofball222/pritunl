@@ -19,7 +19,7 @@ ENV \
     DEBUG=false \
     GOPATH="/go" \
     GOCACHE="/tmp/gocache" \
-    GO111MODULE=off \
+    GO111MODULE=on \
     PRITUNL_OPTS= \
     REVERSE_PROXY=false \
     WIREGUARD=false

@@ -1,5 +1,6 @@
 * **2022-03-21**
     * pritunl v1.30.3112.0
+    * Update Dockerfile variables to match pritunl docs
 ---
 * **2022-03-20**
     * pritunl v1.30.3111.72

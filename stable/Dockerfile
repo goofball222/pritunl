@@ -39,6 +39,7 @@ RUN set -x \
         ip6tables openssl openvpn procps \
         py3-dnspython py3-requests py3-setuptools tzdata \
         wireguard-tools \
+    && apk add --upgrade ipset \    
     && pip3 install --upgrade pip \
     && go get github.com/pritunl/pritunl-dns \
     && go get github.com/pritunl/pritunl-web \

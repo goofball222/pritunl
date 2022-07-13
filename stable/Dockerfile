@@ -40,15 +40,16 @@ RUN set -x \
         py3-dnspython py3-requests py3-setuptools tzdata \
         wireguard-tools \
     && pip3 install --upgrade pip \
-    && go get github.com/pritunl/pritunl-dns \
-    && go get github.com/pritunl/pritunl-web \
+    && go install github.com/pritunl/pritunl-dns@latest \
+    && go install github.com/pritunl/pritunl-web@latest \
     && cp /go/bin/* /usr/bin \
     && cd /tmp \
     && curl -sSL https://github.com/pritunl/pritunl/archive/refs/tags/${VERSION}.tar.gz -o /tmp/${VERSION}.tar.gz \
     && tar -zxf /tmp/${VERSION}.tar.gz \
     && cd /tmp/pritunl-${VERSION} \
+    && sed -i -e '/dataclasses==0.8/,+2d' -e '/packaging==20.9/,+2d' requirements.txt \
     && python3 setup.py build \
-    && pip3 install -r requirements.txt \
+    && pip3 install -U -r requirements.txt \
     && mkdir -p /var/lib/pritunl \
     && python3 setup.py install \
     && apk del -q --purge .build-deps \

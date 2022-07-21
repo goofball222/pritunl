@@ -1,3 +1,6 @@
+* **2022-07-21**
+    * pritunl v1.30.3233.96
+---
 * **2022-07-13**
     * pritunl v1.30.3226.71
     * Add sed command to Dockerfile to remove new pinned requirements incompatible with python 3.7+

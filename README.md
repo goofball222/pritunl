@@ -5,7 +5,7 @@
 ## Docker tags:
 | Tag | pritunl Version | Description | Release Date |
 | --- | :---: | --- | :---: |
-| [latest](https://github.com/goofball222/pritunl/blob/main/stable/Dockerfile) | v1.30.3235.85 | Latest stable release | 2022-07-22 |
+| [latest](https://github.com/goofball222/pritunl/blob/main/stable/Dockerfile) | [v1.30.3236.80](https://github.com/pritunl/pritunl/releases/tag/1.30.3236.80) | Latest stable release | 2022-07-25 |
 
 ---
 
@@ -16,7 +16,7 @@
 
 ## Description
 
-Pritunl container built on Alpine Linux. Supports IPv6 and running behind a reverse proxy. This container requires an external Mongo DB and should be run via Docker Compose or other orchestration.
+[Pritunl](https://github.com/pritunl/pritunl) container built on Alpine Linux. Supports IPv6 and running behind a reverse proxy. This container requires an external Mongo DB and should be run via Docker Compose or other orchestration.
 
 ---
 

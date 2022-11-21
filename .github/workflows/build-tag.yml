@@ -58,7 +58,8 @@ jobs:
         with:
           context: ./stable
           file: ./stable/Dockerfile
-          platforms: linux/amd64,linux/arm64
+#          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta-alpine.outputs.tags }}
           labels: ${{ steps.meta-alpine.outputs.labels }}

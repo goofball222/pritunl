@@ -1,5 +1,9 @@
+* **2022-12-20**
+    * pritunl v1.30.3383.72
+---
 * **2022-11-20**
     * pritunl v1.30.3354.99
+    * arm64 crypto build is broken, disabling pending further debug
 ---
 * **2022-10-26**
     * pritunl v1.30.3331.78

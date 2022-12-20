@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.16
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -37,8 +37,8 @@ RUN set -x \
     && apk add -q --no-cache \
         bash ca-certificates ipset iptables \
         ip6tables openssl openvpn procps \
-        py3-dnspython py3-requests py3-setuptools tzdata \
-        wireguard-tools \
+        py3-dnspython py3-requests py3-setuptools py3-six \
+        tzdata wireguard-tools \
     && pip3 install --upgrade pip \
     && go install github.com/pritunl/pritunl-dns@latest \
     && go install github.com/pritunl/pritunl-web@latest \
@@ -47,7 +47,10 @@ RUN set -x \
     && curl -sSL https://github.com/pritunl/pritunl/archive/refs/tags/${VERSION}.tar.gz -o /tmp/${VERSION}.tar.gz \
     && tar -zxf /tmp/${VERSION}.tar.gz \
     && cd /tmp/pritunl-${VERSION} \
-    && sed -i -e '/dataclasses==0.8/,+2d' -e '/packaging==20.9/,+2d' requirements.txt \
+    && sed -i \
+        -e '/dataclasses==0.8/,+2d' \
+        -e '/packaging==20.9/,+2d' \
+        requirements.txt \
     && python3 setup.py build \
     && pip3 install -U -r requirements.txt \
     && mkdir -p /var/lib/pritunl \

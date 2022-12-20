@@ -1,5 +1,7 @@
 * **2022-12-20**
     * pritunl v1.30.3383.72
+    * Pin to alpine:3.16 base to avoid issues with cyptography & openssl 3
+    * Add py3-six apk to fix runtime error "ModuleNotFoundError: No module named 'six'"
 ---
 * **2022-11-20**
     * pritunl v1.30.3354.99

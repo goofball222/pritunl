@@ -3,8 +3,8 @@
 # Init script for Pritunl Docker container
 # License: Apache-2.0
 # Github: https://github.com/goofball222/pritunl.git
-SCRIPT_VERSION="1.0.1"
-# Last updated date: 2018-08-22
+SCRIPT_VERSION="1.0.2"
+# Last updated date: 2022-12-20
 
 set -Eeuo pipefail
 
@@ -27,6 +27,8 @@ pritunl_setup() {
     log "INFO - Insuring pritunl setup for container"
 
     ${PRITUNL} set-mongodb ${MONGODB_URI:-"mongodb://mongo:27017/pritunl"}
+
+    ${PRITUNL} set app.web_systemd false
 
     if [ "${REVERSE_PROXY}" == 'true' ] && [ "${WIREGUARD}" == 'false' ]; then
             ${PRITUNL} set app.reverse_proxy true

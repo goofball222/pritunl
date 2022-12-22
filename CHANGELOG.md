@@ -1,3 +1,6 @@
+* **2022-12-22**
+    * pritunl v1.30.3388.46
+---
 * **2022-12-20**
     * pritunl v1.30.3383.72
     * Pin to alpine:3.16 base to avoid issues with cyptography & openssl 3

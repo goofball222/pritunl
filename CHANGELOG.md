@@ -1,3 +1,6 @@
+* **2023-02-03**
+    * pritunl v1.30.3431.73
+---
 * **2023-01-30**
     * Update GitHub workflows
 ---

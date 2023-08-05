@@ -5,7 +5,7 @@
 ## Docker tags:
 | Tag | pritunl Version | Description | Release Date |
 | --- | :---: | --- | :---: |
-| [latest](https://github.com/goofball222/pritunl/blob/main/stable/Dockerfile) | [v1.32.3588.94](https://github.com/pritunl/pritunl/releases/tag/1.32.3588.94) | Latest stable release | 2023-07-10 |
+| [latest](https://github.com/goofball222/pritunl/blob/main/stable/Dockerfile) | [v1.32.3602.80](https://github.com/pritunl/pritunl/releases/tag/1.32.3602.80) | Latest stable release | 2023-08-04 |
 
 ---
 

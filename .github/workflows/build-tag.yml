@@ -20,7 +20,7 @@ jobs:
       -
         name: Set up Docker metadata for Alpine
         id: meta-alpine
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         with:
           images: |
             ${{ github.repository }}

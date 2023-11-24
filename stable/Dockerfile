@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.18
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -47,10 +47,6 @@ RUN set -x \
     && curl -sSL https://github.com/pritunl/pritunl/archive/refs/tags/${VERSION}.tar.gz -o /tmp/${VERSION}.tar.gz \
     && tar -zxf /tmp/${VERSION}.tar.gz \
     && cd /tmp/pritunl-${VERSION} \
-    && sed -i \
-        -e '/dataclasses==0.8/,+2d' \
-        -e '/packaging==20.9/,+2d' \
-        requirements.txt \
     && python3 setup.py build \
     && pip3 install -U -r requirements.txt \
     && mkdir -p /var/lib/pritunl \

@@ -1,5 +1,7 @@
 * **2023-11-24**
     * pritunl v1.32.3725.2
+    * Re-pin to alpine:3.18 base, crypto issues during build appear to have been fixed
+    * Remove sed workaround
 ---
 * **2023-09-21**
     * pritunl v1.32.3660.72

@@ -1,3 +1,6 @@
+* **2023-12-13**
+    * pritunl v1.32.3732.84
+---
 * **2023-11-24**
     * pritunl v1.32.3725.2
     * Re-pin to alpine:3.18 base, crypto issues during build appear to have been fixed

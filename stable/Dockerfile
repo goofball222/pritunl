@@ -26,7 +26,7 @@ ENV \
 
 WORKDIR /opt/pritunl
 
-ADD root /
+COPY root /
 
 RUN set -x \
     && apk add -q --no-cache --virtual .build-deps \
@@ -39,7 +39,7 @@ RUN set -x \
         ip6tables openssl openvpn procps \
         py3-dnspython py3-requests py3-setuptools py3-six \
         tzdata wireguard-tools \
-    && pip3 install --upgrade pip \
+    && pip3 install --no-cache-dir --upgrade pip \
     && go install github.com/pritunl/pritunl-dns@latest \
     && go install github.com/pritunl/pritunl-web@latest \
     && cp /go/bin/* /usr/bin \
@@ -48,7 +48,7 @@ RUN set -x \
     && tar -zxf /tmp/${VERSION}.tar.gz \
     && cd /tmp/pritunl-${VERSION} \
     && python3 setup.py build \
-    && pip3 install -U -r requirements.txt \
+    && pip3 install --no-cache-dir -U -r requirements.txt \
     && mkdir -p /var/lib/pritunl \
     && python3 setup.py install \
     && apk del -q --purge .build-deps \

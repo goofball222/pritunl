@@ -1,7 +1,5 @@
-version: '3'
-
 services:
-  mongo:
+  pritunldb:
     image: mongo:latest
     container_name: pritunldb
     hostname: pritunldb
@@ -18,7 +16,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
     links:
-      - mongo
+      - pritunldb:mongo
     volumes:
       - /etc/localtime:/etc/localtime:ro
     ports:

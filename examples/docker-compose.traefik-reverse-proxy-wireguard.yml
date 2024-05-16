@@ -1,12 +1,10 @@
-version: '3'
-
 services:
-  mongo:
+  pritunldb:
     image: mongo:latest
     container_name: pritunldb
     hostname: pritunldb
     networks:
-      - private
+      - internal
     volumes:
       - ./db:/data/db
 
@@ -18,10 +16,10 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
     networks:
-      - private
+      - internal
       - proxy
     links:
-      - mongo
+      - pritunldb:mongo
     volumes:
       - /etc/localtime:/etc/localtime:ro
     ports:
@@ -33,22 +31,37 @@ services:
       - 443
     environment:
       - TZ=UTC
-      - MONGODB_URI=mongodb://mongo:27017/pritunl
+      - MONGODB_URI=mongodb://pritunldb:27017/pritunl
       - REVERSE_PROXY=true
       - WIREGUARD=true
     labels:
-      - traefik.backend=pritunl
-      - traefik.frontend.rule=Host:<HOSTNAME>
-      - traefik.port=443
-      - traefik.protocol=https
-      - traefik.docker.network=proxy
       - traefik.enable=true
+      ## Traefik v1:
+#      - traefik.backend=pritunl
+#      - traefik.frontend.rule=Host:<HOSTNAME>
+#      - traefik.port=443
+#      - traefik.protocol=https
+#      - traefik.docker.network=proxy
+      ## Traefik v2+:
+      - traefik.docker.network=proxy
+      ## Traefik v2 HTTP Routers
+      - traefik.http.routers.pritunl-rtr.entrypoints=https
+      - traefik.http.routers.pritunl-rtr.rule=Host(`<HOSTNAME>`)
+      - traefik.http.routers.pritunl-rtr.tls=true
+      ## Traefik v2 Middlewares
+#      - traefik.http.routers.pritunl-rtr.middlewares=chain-no-auth@file # No Authentication
+#      - traefik.http.routers.pritunl-rtr.middlewares=chain-basic-auth@file # Basic Authentication
+#      - traefik.http.routers.pritunl-rtr.middlewares=chain-oauth@file # Google OAuth 2.0
+      ## Traefik v2 HTTP Services
+      - traefik.http.routers.pritunl-rtr.service=pritunl-svc
+      - traefik.http.services.pritunl-svc.loadbalancer.server.scheme=https
+      - traefik.http.services.pritunl-svc.loadbalancer.server.port=443
 
 networks:
   proxy:
     external:
       name: proxy
-  private:
+  internal:
     driver: bridge
     internal: true
 

@@ -1,3 +1,6 @@
+* **2024-09-27**
+    * pritunl v1.32.4034.11
+---
 * **2024-05-16**
     * Update docker compose examples
 ---
